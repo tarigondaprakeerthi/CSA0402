@@ -1,0 +1,30 @@
+16. Develop a C program for implementing random access file for processing the employee details 
+#include <stdio.h>
+
+struct Employee {
+    int id;
+    char name[20];
+    float salary;
+};
+
+int main() {
+    FILE *fp;
+    struct Employee e;
+
+    fp = fopen("employee.dat", "wb+");
+
+    printf("Enter ID Name Salary: ");
+    scanf("%d %s %f", &e.id, e.name, &e.salary);
+
+    fwrite(&e, sizeof(e), 1, fp);
+
+    rewind(fp);
+    fread(&e, sizeof(e), 1, fp);
+
+    printf("\nEmployee Details\n");
+    printf("ID: %d\nName: %s\nSalary: %.2f\n",
+           e.id, e.name, e.salary);
+
+    fclose(fp);
+    return 0;
+}
