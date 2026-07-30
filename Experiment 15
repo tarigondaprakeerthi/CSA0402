@@ -1,0 +1,32 @@
+15. Design a C program to organize the file using two level directory structure. 
+#include <stdio.h>
+
+int main() {
+    int i, j, users, files;
+    char user[10][20], file[10][10][20];
+
+    printf("Enter number of users: ");
+    scanf("%d", &users);
+
+    for(i = 0; i < users; i++) {
+        printf("Enter user name: ");
+        scanf("%s", user[i]);
+
+        printf("Enter number of files: ");
+        scanf("%d", &files);
+
+        for(j = 0; j < files; j++) {
+            printf("Enter file %d: ", j + 1);
+            scanf("%s", file[i][j]);
+        }
+    }
+
+    printf("\nTwo Level Directory Structure\n");
+    for(i = 0; i < users; i++) {
+        printf("%s:\n", user[i]);
+        for(j = 0; j < files; j++)
+            printf("  %s\n", file[i][j]);
+    }
+
+    return 0;
+}
